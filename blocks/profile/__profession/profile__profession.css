@@ -1,6 +1,5 @@
 .profile__profession {
   margin: 14px 0 36px;
-
   font-weight: normal;
   font-size: 4.375vw;
   line-height: 121.428571%;
@@ -23,7 +22,7 @@
   .profile__profession {
     font-size: 1.40625vw;
     line-height: 122.222222%;
-    justify-self: start ;
+    justify-self: start;
   }
 }
 
