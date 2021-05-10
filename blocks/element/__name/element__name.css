@@ -6,6 +6,6 @@
   margin: 0;
   width: 68%;
   white-space: nowrap;
-  overflow: hidden; 
+  overflow: hidden;
   text-overflow: ellipsis;
 }

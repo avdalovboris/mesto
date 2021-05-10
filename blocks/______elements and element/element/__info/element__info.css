@@ -1,9 +1,0 @@
-.element__info {
-  display: flex;
-  background-color: #fff;
-  color: #000;
-  justify-content: space-between;
-  min-height: 79px;
-  align-items: center;
-  border-radius: 0 0 10px 10px;
-}

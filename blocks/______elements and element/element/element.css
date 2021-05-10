@@ -1,7 +1,0 @@
-.element {
-  width: 88.125vw;
-}
-
-@media(min-width: 375px){
-  width: none;
-}
