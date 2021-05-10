@@ -1,0 +1,9 @@
+.profile__plus {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  margin: auto;
+  background-position: center;
+  background-image: url(./button__plus-min.svg);
+}

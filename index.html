@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>KustoMes</title>
+</head>
+<body class="body">
+
+  <div class="page">
+
+      <section class="popup">
+        <div class="popup__container">
+          <div class="popup__size">
+            <button class="popup__close"></button>
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <input class="popup__full-name" type="text" name="username">
+            <hr class="popup__line">
+            <input class="popup__profession" type="text" name="profession">
+            <hr class="popup__line">
+            <button type="submit" class="popup__save">Сохранить</button>
+          </div>
+        </div>
+      </section>
+
+    <header class="header">
+
+      <div class="header__logo">
+        <div class="logo"></div>
+      </div>
+      
+    </header>
+
+    <main class="content">
+      <section class="profile">
+
+        <img src="./images/profile/jak-iv-kusto.png" alt="Фотография французского исследователя мирового океана - Жака Ив Кусто" class="profile__avatar">
+        
+        <div class="profile__info">
+          <div class="profile__name">
+            <h1 class="profile__full-name">Жак-Ив Кусто</h1>
+            <form class="profile__rectangle" action="#">
+              <fieldset class="profile__pencil"></fieldset>
+            </form>
+            <p class="profile__profession">Исследователь океана</p>
+          </div>
+          
+        </div>
+
+        <form class="profile__button" action="#">
+          <fieldset class="profile__plus"></fieldset>
+        </form>
+
+      </section>
+      
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="element">
+            <img src="./images/elements/karachaevo.png" alt="" class="element__img">
+            <div class="element__info">
+              <h2 class="element__name">Карачаевск</h2>
+              <div class="element__like"></div>
+            </div>
+          </li>
+
+          <li class="element">
+            <img src="./images/elements/elbrus.png" alt="" class="element__img">
+            <div class="element__info">
+              <h2 class="element__name">Гора Эльбрус</h2>
+              <div class="element__like"></div>
+            </div>
+          </li>
+
+          <li class="element">
+            <img src="./images/elements/dombay.png" alt="" class="element__img">
+            <div class="element__info">
+              <h2 class="element__name">Домбай</h2>
+              <div class="element__like"></div>
+            </div>
+          </li>
+
+          <li class="element">
+            <img src="./images/elements/elbrus.png" alt="" class="element__img">
+            <div class="element__info">
+              <h2 class="element__name">Гора Эльбрус</h2>
+              <div class="element__like"></div>
+            </div>
+          </li>
+
+          <li class="element">
+            <img src="./images/elements/dombay.png" alt="" class="element__img">
+            <div class="element__info">
+              <h2 class="element__name">Домбай</h2>
+              <div class="element__like"></div>
+            </div>
+          </li>
+
+          <li class="element">
+            <img src="./images/elements/karachaevo.png" alt="" class="element__img">
+            <div class="element__info">
+              <h2 class="element__name">Карачаево-Черкесия</h2>
+              <div class="element__like"></div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">&copy; 2021 Mesto Russia</p>
+    </footer>
+  </div>
+
+  <script src="./script/script.js"></script>
+</body>
+</html>

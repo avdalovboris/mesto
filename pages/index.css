@@ -1,0 +1,46 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/font.css);
+@import url(../style.css);
+
+@import url(../blocks/body/body.css);
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/logo/logo.css);
+
+@import url(../blocks/content/content.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__full-name/profile__full-name.css);
+@import url(../blocks/profile/__rectangle/profile__rectangle.css);
+@import url(../blocks/profile/__pencil/profile__pencil.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
+@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__plus/profile__plus.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__list/elements__list.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__img/element__img.css);
+@import url(../blocks/element/__info/element__info.css);
+@import url(../blocks/element/__name/element__name.css);
+@import url(../blocks/element/__like/element__like.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__header/popup__header.css);
+@import url(../blocks/popup/__full-name/popup__full-name.css);
+@import url(../blocks/popup/__line/popup__line.css);
+@import url(../blocks/popup/__profession/popup__profession.css);
+@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__openned/popup__openned.css);
+@import url(../blocks/popup/__size/popup__size.css);
+
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
+
