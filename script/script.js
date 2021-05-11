@@ -15,13 +15,14 @@ console.log(btnSave)
 
 //    СОБЫТИЕ  ОТКРЫТЬ POPUP
 btnOpenPopup.addEventListener('click', function(){
-  popup.classList.add('popup__openned')
+  popup.classList.add('popup_openned')
   popupFullName.value = profileFullName.textContent
   popupProfession.value = profileProfession.textContent
 })
+
 //     ФУНКЦИЯ ЗАКРЫТЬ POPUP
 function close() {
-  popup.classList.remove('popup__openned')
+  popup.classList.remove('popup_openned')
 }
 
 //     СОБЫТИЕ ЗАКРЫТЬ POPUP
@@ -42,4 +43,3 @@ btnSave.addEventListener('click', function() {
   profileProfession.textContent = popupProfession.value
   close()
 })
-

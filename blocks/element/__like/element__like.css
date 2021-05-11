@@ -1,5 +1,5 @@
 .element__like {
-  background-image: url(./like.svg);
+  background-image: url(../../../images/element/__like/like.svg);
   width: 22px;
   height: 19px;
   margin-right: 15px;
@@ -11,5 +11,5 @@
 }
 
 .element__like:active {
-  background-image: url(./like__black.svg);
+  background-image: url(../../../images/element/__like/like__black.svg);
 }
