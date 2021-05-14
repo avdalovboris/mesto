@@ -1,18 +1,4 @@
 .popup__container {
-  /*
-  background-color: #fff;
-  color: #000;
-  width: 33.59375vw;
-  max-width: 430px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  max-height: 330px;
-  */
   background-color: #fff;
   color: #000;
   width: 88.125vw;
@@ -21,7 +7,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 @media (min-width: 620px) {

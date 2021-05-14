@@ -5,7 +5,7 @@
   border: none;
   margin: auto;
   background-position: center;
-  background-image: url(../../../images/profile/__plus/button__plus-min.svg);
+  background: center url(../../../images/profile/__plus/button__plus-min.svg);
 }
 
 @media (min-width: 768px) {

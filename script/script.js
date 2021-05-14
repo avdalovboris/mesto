@@ -1,45 +1,52 @@
-//    КНОПКА ОТКРЫТИЯ POPUP В DOM
-const btnOpenPopup = document.querySelector('.profile__rectangle')
-console.log(btnOpenPopup)
+//                                DOM ELEMENT
+//                      -popup-
+let popup = document.querySelector('.popup')
 
-//    POPUP В DOM
-const popup = document.querySelector('.popup')
+//           form
+let form = document.querySelector('.popup__form')
 
-//    КНОПКА ЗАКРЫТИЯ POPUP В DOM
-const btnClosePopup = document.querySelector('.popup__close')
-console.log(btnClosePopup)
+//           name
+let popupName = document.querySelector('#popupName')
 
-//    КНОПКА СОХРАНИТЬ POPUP В DOM
-const btnSave = document.querySelector('.popup__save')
-console.log(btnSave)
+//           job
+let popupJob = document.querySelector('#popupJob')
 
-//    СОБЫТИЕ  ОТКРЫТЬ POPUP
-btnOpenPopup.addEventListener('click', function(){
+//                      -button-
+//           open popup
+let openPopupButton = document.querySelector('.profile__rectangle')
+
+//           close popup
+let buttonClose = document.querySelector('#popupClose')
+
+//                      -profile-
+//           name
+let profileName = document.querySelector('.profile__full-name')
+
+//           job
+let profileJob = document.querySelector('.profile__profession')
+
+//                                FUNCTION 
+function open() {
   popup.classList.add('popup_openned')
-  popupFullName.value = profileFullName.textContent
-  popupProfession.value = profileProfession.textContent
-})
-
-//     ФУНКЦИЯ ЗАКРЫТЬ POPUP
+  popupName.value = profileName.textContent
+  popupJob.value =  profileJob.textContent
+}
 function close() {
   popup.classList.remove('popup_openned')
 }
-
-//     СОБЫТИЕ ЗАКРЫТЬ POPUP
-btnClosePopup.addEventListener('click', close)
-
-
-//    ПОЛНОЕ ИМЯ И ПРОФЕССИЯ В POPUP
-let popupFullName = document.querySelector('.popup__full-name')
-let popupProfession = document.querySelector('.popup__profession')
-
-//    ПОЛНОЕ ИМЯ И ПРОФЕССИЯ В PROFILE
-let profileFullName = document.querySelector('.profile__full-name')
-let profileProfession = document.querySelector('.profile__profession')
-
-//     КНОПКА SAVE 
-btnSave.addEventListener('click', function() {
-  profileFullName.textContent = popupFullName.value
-  profileProfession.textContent = popupProfession.value
+function save() {
+  profileName.textContent = popupName.value
+  profileJob.textContent = popupJob.value
   close()
-})
+}
+
+function formSubmitHandler (submit) {
+  submit.preventDefault();
+  profileName.textContent = popupName.value
+  profileJob.textContent = popupJob.value
+  close()
+}
+//                                EVENT
+openPopupButton.addEventListener('click', open)
+buttonClose.addEventListener('click', close)
+form.addEventListener('submit', formSubmitHandler)

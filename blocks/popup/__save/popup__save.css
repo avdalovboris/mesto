@@ -1,18 +1,22 @@
 .popup__save {
-  height: 50px;
+  height: 46px;
   background-color: black;
   color: #fff;
   border: none;
   padding: 0;
-  margin: 45px 0 25px;
+  margin: 16px 0 25px;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   width: 100%;
+  border-radius: 2px;
+  transition: all .3s ease-in-out;
 }
 
 @media (min-width: 620px) {
   .popup__save{
+    height: 50px;
+    margin: 24px 0 38px;
     font-size: 18px;
     line-height: 22px;
   }

@@ -2,20 +2,21 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  top: -35px;
-  right: 0;
-  background: transparent url(../../../images/popup/__close/Close\ Icon.svg);
+  top: -42px;
+  right: 8px;
+  background: transparent url(../../../images/popup/__close/Close_Icon.svg);
   background-position: center;
   background-size: cover;
   border: none;
   padding: 0;
+  transition: all .3s ease-in-out;
 }
 
 @media (min-width: 620px) {
   .popup__close {
     width: 32px;
     height: 32px;
-    top: -34px;
+    top: -36px;
     right: -36px;
   }
 }

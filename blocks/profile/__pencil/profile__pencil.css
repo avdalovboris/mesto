@@ -4,12 +4,12 @@
   border: none;
   width: 7.5px;
   height: 7.5px;
-  background-image: url(../../../images/profile/__pencil/pencil-min.svg);
+  background: center url(../../../images/profile/__pencil/pencil-min.svg);
 }
 
 @media (min-width: 768px) {
   .profile__pencil {
-    background-image: url(../../../images/profile/__pencil/pencil-max.svg);
+    background: center url(../../../images/profile/__pencil/pencil-max.svg);
     width: 10px;
     height: 10px;
   }

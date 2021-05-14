@@ -13,14 +13,6 @@
   src: url('./inter-v3-latin_cyrillic-500.woff2') format('woff2'); /* Super Modern Browsers */
 }
 
-/* inter-700 - latin_cyrillic */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  src: url(./inter-v3-latin_cyrillic-700.woff2) format('woff2'); /* Super Modern Browsers */
-}
-
 /* inter-900 - latin_cyrillic */
 @font-face {
   font-family: 'Inter';

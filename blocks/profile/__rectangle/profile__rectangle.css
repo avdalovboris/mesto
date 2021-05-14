@@ -5,6 +5,7 @@
   box-sizing: border-box;
   width: 18px;
   height: 18px;
+  transition: all .3s ease-in-out;
 }
 
 @media (min-width: 768px) {

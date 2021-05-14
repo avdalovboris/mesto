@@ -3,6 +3,10 @@
   font-weight: normal;
   font-size: 4.375vw;
   line-height: 121.428571%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 336px;
 }
 
 @media (min-width: 375px) {
