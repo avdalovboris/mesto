@@ -34,11 +34,6 @@ function open() {
 function close() {
   popup.classList.remove('popup_openned')
 }
-function save() {
-  profileName.textContent = popupName.value
-  profileJob.textContent = popupJob.value
-  close()
-}
 
 function formSubmitHandler (submit) {
   submit.preventDefault();

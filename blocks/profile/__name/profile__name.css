@@ -13,3 +13,9 @@
   }
 }
 
+@media (min-width: 620px) {
+  .profile__name {
+    row-gap: 6px;
+    column-gap: 19px;
+  }
+}

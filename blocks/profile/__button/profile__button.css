@@ -6,6 +6,8 @@
   border-radius: 2px;
   display: flex;
   transition: all .3s ease-in-out;
+  background: transparent;
+  padding: 0;
 }
 
 @media (min-width: 375px) {

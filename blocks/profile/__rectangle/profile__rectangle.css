@@ -6,6 +6,8 @@
   width: 18px;
   height: 18px;
   transition: all .3s ease-in-out;
+  background: transparent;
+  position: relative;
 }
 
 @media (min-width: 768px) {
