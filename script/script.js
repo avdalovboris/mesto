@@ -13,7 +13,7 @@ let popupJob = document.querySelector('#popupJob')
 
 //                      -button-
 //           open popup
-let openPopupButton = document.querySelector('.profile__rectangle')
+let openPopupButton = document.querySelector('.profile__edit')
 
 //           close popup
 let buttonClose = document.querySelector('#popupClose')
