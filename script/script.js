@@ -44,7 +44,7 @@ let inputEditJob = popupEdit.querySelector('#inputEditJob')
 let btnOpenPopupEdit = document.querySelector('.profile__edit')
 
 //           close popup Edit
-let btnClosePopupEdit = popupEdit.querySelector('#popupClose')
+let btnClosePopupEdit = popupEdit.querySelector('.popup__close')
 
                       //-popupAdd-
 //                      -popupAdd-
@@ -64,7 +64,7 @@ let inputAddPhotoSrc = popupAdd.querySelector('#inputAddPhotoSrc')
 let btnOpenPopupAdd = document.querySelector('.profile__add')
 
 //           close popup Edit
-let btnClosePopupAdd = popupAdd.querySelector('#popupClose')
+let btnClosePopupAdd = popupAdd.querySelector('.popup__close')
 
 //                      -profile-
 //           name
