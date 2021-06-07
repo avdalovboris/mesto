@@ -34,65 +34,32 @@
       
       <section class="elements">
         <ul class="elements__list">
-          <li class="element">
-            <img src="./images/elements/karachaevo.png" alt="Старое здание на фоне лесов в горах Карачаевска" class="element__img">
-            <div class="element__info">
-              <h2 class="element__name">Карачаевск</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
 
-          <li class="element">
-            <img src="./images/elements/elbrus.png" alt="Гора Эльбрус" class="element__img">
-            <div class="element__info">
-              <h2 class="element__name">Гора Эльбрус</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="./images/elements/dombay.png" alt="Домбай, горы" class="element__img">
-            <div class="element__info">
-              <h2 class="element__name">Домбай</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="./images/elements/elbrus.png" alt="Гора Эльбрус" class="element__img">
-            <div class="element__info">
-              <h2 class="element__name">Гора Эльбрус</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="./images/elements/dombay.png" alt="Домбай, горы" class="element__img">
-            <div class="element__info">
-              <h2 class="element__name">Домбай</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="./images/elements/karachaevo.png" alt="Старое здание на фоне лесов в горах Карачаево-Черкесии " class="element__img">
-            <div class="element__info">
-              <h2 class="element__name">Карачаево-Черкесия</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </li>
         </ul>
       </section>
 
     </main>
 
-    <div class="popup">
+                                        
+                                        
+
+    <div class="popup" id="popupFullScreen">
+      <div class="full-screen">
+        <div class="full-screen__block">
+          <img class="full-screen__img" src="">
+          <p class="full-screen__text">ada</p>
+          <button type="button" class="popup__close" id="popupClose"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup" id="popupEdit">
       <div class="popup__container">
   
         <h2 class="popup__header">Редактировать профиль</h2>
         <form action="#" method="GET"  class="popup__form" name="form_profile-info_popup">
-          <input type="text" class="popup__field" id="popupName" name="popup__name">
-          <input type="text" class="popup__field" id="popupJob" name="popup__job">
+          <input type="text" class="popup__field" id="inputEditName" name="popup__name">
+          <input type="text" class="popup__field" id="inputEditJob" name="popup__job">
           <button type="submit" class="popup__save">Сохранить</button>
         </form>
   
@@ -101,10 +68,37 @@
       </div>
     </div>
 
+    <div class="popup" id="popupAdd">
+      <div class="popup__container">
+  
+        <h2 class="popup__header">Новое место</h2>
+        <form action="#" method="GET"  class="popup__form" name="form_profile-info_popup">
+          <input type="text" class="popup__field" id="inputAddPhotoName" name="popup__name_image" placeholder="Название">
+          <input type="text" class="popup__field" id="inputAddPhotoSrc" name="popup__src_image" placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__save">добавить</button>
+        </form>
+  
+        <button type="button" class="popup__close" id="popupClose"></button>
+  
+      </div>
+    </div>
+
     <footer class="footer">
       <p class="footer__text">&copy; 2021 Mesto Russia</p>
     </footer>
   </div>
+
+  <template id="templateElement">
+    <li class="element">
+      <img src="" alt="Старое здание на фоне лесов в горах Карачаево-Черкесии " class="element__img">
+      <div class="element__info">
+        <h2 class="element__name">...</h2>
+        <button type="button" class="element__like element__like_no-active"></button>
+      </div>
+      <button type="button" class="element__delite" id="elementDelite"></button>
+    </li>
+  </ul>
+  </template>
 
   <script src="./script/script.js"></script>
 </body>

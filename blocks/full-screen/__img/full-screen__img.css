@@ -1,0 +1,8 @@
+.full-screen__img {
+  max-height: 75vh;
+  width: 75vw;
+  max-width: 816px;
+  box-sizing: border-box;
+  background-position: center;
+  background-size: cover;
+}
