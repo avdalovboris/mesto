@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -23,154 +23,120 @@ let initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-]; 
-
-//                                DOM ELEMENT
-                      //-popupEdit-
-//                      -popupEdit-
-let popupEdit = document.querySelector('#popupEdit')
-
-//           form
-let formEdit = popupEdit.querySelector('.popup__form')
-
-//           name
-let inputEditName = popupEdit.querySelector('#inputEditName')
-
-//           job
-let inputEditJob = popupEdit.querySelector('#inputEditJob')
-
-//                      -button-
-//           open popup Edit
-let btnOpenPopupEdit = document.querySelector('.profile__edit')
-
-//           close popup Edit
-let btnClosePopupEdit = popupEdit.querySelector('.popup__close')
-
-                      //-popupAdd-
-//                      -popupAdd-
-let popupAdd = document.querySelector('#popupAdd')
-
-//           form
-let formAdd = popupAdd.querySelector('.popup__form')
-
-//           name
-let inputAddPhotoName = popupAdd.querySelector('#inputAddPhotoName')
-
-//           job
-let inputAddPhotoSrc = popupAdd.querySelector('#inputAddPhotoSrc')
-
-//                      -button-
-//           open popup Edit
-let btnOpenPopupAdd = document.querySelector('.profile__add')
-
-//           close popup Edit
-let btnClosePopupAdd = popupAdd.querySelector('.popup__close')
-
-//                      -profile-
-//           name
-let profileName = document.querySelector('.profile__full-name')
-
-//           job
-let profileJob = document.querySelector('.profile__profession')
-
-const popupFullScreen = document.querySelector('#popupFullScreen')
-const btnClosePopupFullScreen = popupFullScreen.querySelector('.popup__close')
-
+];
+                      //дом edit profile
+const modalEditProfile = document.querySelector('#popupEditProfile')
+const btnOpenModalEditProfile = document.querySelector('.profile__edit')
+const btnCloseModalEditProfile = modalEditProfile.querySelector('.popup__close')
+                      //дом add photo
+const modalAddPhoto = document.querySelector('#popupAddPhoto')
+const btnOpenModalAddPhoto = document.querySelector('.profile__add')
+const btnCloseModalAddPhoto = modalAddPhoto.querySelector('.popup__close')
+                      
+const elementsLists = document.querySelector('.elements__list')
+const cardPreview = document.querySelector('#popupFullScreen')
 const templateElement = document.querySelector('#templateElement').content
-const elementsList = document.querySelector('.elements__list')
+const profileName = document.querySelector('.profile__full-name') 
+const profileJob = document.querySelector('.profile__profession') 
 
-//
-//                                FUNCTION 
-function openEdit() {
-  popupEdit.classList.add('popup_openned')
-  inputEditName.value = profileName.textContent
-  inputEditJob.value =  profileJob.textContent
-}
-function closeEdit() {
-  popupEdit.classList.remove('popup_openned')
+
+                      //open and close popup
+function openModal(modal) {
+  modal.classList.add('popup_opened')
+  console.log(modal)
 }
 
-function openAdd() {
-  popupAdd.classList.add('popup_openned')
+function closeModal(modal) {
+  modal.classList.remove('popup_opened')
 }
-function closeAdd() {
-  popupAdd.classList.remove('popup_openned')
-  inputAddPhotoSrc.value = ''
-  inputAddPhotoName.value = ''
+                      //edit profile: open | close | submit
+function openeModalEditProfile() {
+  openModal(modalEditProfile)
+  modalEditProfile.querySelector('#inputEditProfileName').value = document.querySelector('.profile__full-name').textContent
+  modalEditProfile.querySelector('#inputEditProfileJob').value = document.querySelector('.profile__profession').textContent
 }
 
-function formSubmitHandler (submit) {
+function closeModalEditProfile() {
+  closeModal(modalEditProfile)
+}
+
+function profileFormSubmitHandler (submit) {
   submit.preventDefault();
-  profileName.textContent = inputEditName.value
-  profileJob.textContent = inputEditJob.value
-  closeEdit()
+  profileName.textContent = modalEditProfile.querySelector('#inputEditProfileName').value
+  profileJob.textContent = modalEditProfile.querySelector('#inputEditProfileJob').value
+  closeModalEditProfile()
+}
+                      //add photo open | close
+function OpenModalAddPhoto() {
+  openModal(modalAddPhoto)
 }
 
-                                
-                                
-
-function renderInitialCards() {
-  initialCards.forEach(renderInitialCard)
+function closeModalAddPhoto() {
+  closeModal(modalAddPhoto)
 }
 
-function renderInitialCard(element) {
-  const initialCardElement = templateElement.cloneNode(true);
-
-  initialCardElement.querySelector('.element__img').src = element.link;
-  initialCardElement.querySelector('.element__name').textContent = element.name;
-  
-  setEventListeners(initialCardElement)
-  elementsList.appendChild(initialCardElement)
+                      //load photo of massive | create new card | submit (add new photo on page)
+function renderCards() {
+  initialCards.forEach(renderCard)
 }
 
-                                
-                                
+function renderCard(card){
+  const newCard = createCard(card.name, card.link)
+  elementsLists.prepend(newCard)
+}
 
-function formSubmitHandlerP (submit) {
+function createCard(name, link) {
+  const cardElement = templateElement.cloneNode(true);
+  const elementName = cardElement.querySelector('.element__name')
+  const elementPhoto = cardElement.querySelector('.element__img')
+
+  elementName.textContent = name;
+  elementPhoto.src = link;
+  elementPhoto.alt = name;
+
+  function handleDeconste(evt) {
+    evt.target.closest('.element').remove()
+  }
+
+  function handleLike(evt) {
+    evt.target.closest('.element__like').classList.toggle('element__like_no-active')
+    evt.target.closest('.element__like').classList.toggle('element__like_active')
+  }
+
+  function openCardPreview(evt) {
+    openModal(cardPreview)
+    cardPreview.classList.add('popup_full')
+    cardPreview.querySelector('.full-screen__img').src = evt.target.closest('.element__img').src
+    cardPreview.querySelector('.full-screen__text').textContent = evt.target.closest('.element').textContent
+  }
+
+  function closeCardPreview(evt) {
+    closeModal(cardPreview)
+  }
+
+  cardElement.querySelector('.element__like').addEventListener('click', handleLike)
+  cardElement.querySelector('.element__delite').addEventListener('click', handleDeconste)
+  cardElement.querySelector('.element__img').addEventListener('click', openCardPreview)
+  cardPreview.querySelector('.popup__close').addEventListener('click', closeCardPreview)
+
+  elementsLists.prepend(cardElement)
+  return cardElement
+}
+
+function cardFormSubmitHandler(submit) {
   submit.preventDefault();
-  const initialCardElement = templateElement.cloneNode(true);
-  initialCardElement.querySelector('.element__img').src = document.querySelector('#inputAddPhotoSrc').value;
-  initialCardElement.querySelector('.element__name').textContent = document.querySelector('#inputAddPhotoName').value;
-  setEventListeners(initialCardElement)
-  elementsList.prepend(initialCardElement)
-  closeAdd()
-}
+  const nameNewPhotoName = modalAddPhoto.querySelector('#inputAddPhotoName').value
+  const nameNewPhotoSrc = modalAddPhoto.querySelector('#inputAddPhotoSrc').value
+  const newCard = createCard(nameNewPhotoName, nameNewPhotoSrc); 
+  elementsLists.prepend(newCard)
+  closeModalAddPhoto();
+};
 
-formAdd.addEventListener('submit', formSubmitHandlerP)
 
-function handleDelete(evt) {
-  evt.target.closest('.element').remove()
-}
-
-function handleLike(evt) {
-  evt.target.closest('.element__like').classList.toggle('element__like_no-active')
-  evt.target.closest('.element__like').classList.toggle('element__like_active')
-}
-
-//////////////////////////////////////////
-
-function fullScreen (evt) {
-  const initialCardElement = templateElement.cloneNode(true);
-  popupFullScreen.classList.add('popup_full', 'popup_openned')
-  popupFullScreen.querySelector('.full-screen__img').src = evt.target.closest('.element__img').src
-  popupFullScreen.querySelector('.full-screen__text').textContent = evt.target.closest('.element').textContent
-}
-
-function closeFullScreen(evt) {
-  evt.target.closest('#popupFullScreen').classList.remove('popup_openned')
-}
-
-function setEventListeners(element) {
-  element.querySelector('.element__like').addEventListener('click', handleLike)
-  element.querySelector('.element__delite').addEventListener('click', handleDelete)
-  element.querySelector('.element__img').addEventListener('click', fullScreen)
-  btnClosePopupFullScreen.addEventListener('click', closeFullScreen)
-}
-
-////                                EVENT
-btnOpenPopupEdit.addEventListener('click', openEdit)
-btnOpenPopupAdd.addEventListener('click', openAdd)
-btnClosePopupEdit.addEventListener('click', closeEdit)
-btnClosePopupAdd.addEventListener('click', closeAdd)
-formEdit.addEventListener('submit', formSubmitHandler)
-renderInitialCards()
+renderCards()
+btnOpenModalEditProfile.addEventListener('click', openeModalEditProfile)
+btnCloseModalEditProfile.addEventListener('click', closeModalEditProfile)
+btnOpenModalAddPhoto.addEventListener('click', OpenModalAddPhoto)
+btnCloseModalAddPhoto.addEventListener('click', closeModalAddPhoto)
+modalEditProfile.querySelector('.popup__form').addEventListener('submit', profileFormSubmitHandler)
+modalAddPhoto.querySelector('.popup__form').addEventListener('submit', cardFormSubmitHandler)
