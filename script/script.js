@@ -43,7 +43,6 @@ const profileJob = document.querySelector('.profile__profession')
                       //open and close popup
 function openModal(modal) {
   modal.classList.add('popup_opened')
-  console.log(modal)
 }
 
 function closeModal(modal) {
@@ -52,8 +51,8 @@ function closeModal(modal) {
                       //edit profile: open | close | submit
 function openeModalEditProfile() {
   openModal(modalEditProfile)
-  modalEditProfile.querySelector('#inputEditProfileName').value = document.querySelector('.profile__full-name').textContent
-  modalEditProfile.querySelector('#inputEditProfileJob').value = document.querySelector('.profile__profession').textContent
+  modalEditProfile.querySelector('#user-name').value = document.querySelector('.profile__full-name').textContent
+  modalEditProfile.querySelector('#user-job').value = document.querySelector('.profile__profession').textContent
 }
 
 function closeModalEditProfile() {
@@ -62,8 +61,8 @@ function closeModalEditProfile() {
 
 function profileFormSubmitHandler (submit) {
   submit.preventDefault();
-  profileName.textContent = modalEditProfile.querySelector('#inputEditProfileName').value
-  profileJob.textContent = modalEditProfile.querySelector('#inputEditProfileJob').value
+  profileName.textContent = modalEditProfile.querySelector('#user-name').value
+  profileJob.textContent = modalEditProfile.querySelector('#user-job').value
   closeModalEditProfile()
 }
                       //add photo open | close
@@ -118,6 +117,8 @@ function createCard(name, link) {
   cardElement.querySelector('.element__delite').addEventListener('click', handleDeconste)
   cardElement.querySelector('.element__img').addEventListener('click', openCardPreview)
   cardPreview.querySelector('.popup__close').addEventListener('click', closeCardPreview)
+  cardPreview.addEventListener('click', closePopupClickOverlay)
+
 
   elementsLists.prepend(cardElement)
   return cardElement
@@ -132,6 +133,22 @@ function cardFormSubmitHandler(submit) {
   closeModalAddPhoto();
 };
 
+function closePopupClickOverlay(event) {
+  if(event.target === event.currentTarget){
+    closeModal(event.currentTarget)
+  }
+}
+
+function closePopupClickKeydown(evt) {
+  const popupEditProfile = document.querySelector('#popupEditProfile')
+  const popupAddPhoto = document.querySelector('#popupAddPhoto')
+  const popupFullScreen = document.querySelector('#popupFullScreen')
+  if(evt.key === "Escape") {
+    closeModal(popupEditProfile)
+    closeModal(popupAddPhoto)
+    closeModal(popupFullScreen)
+  }
+}
 
 renderCards()
 btnOpenModalEditProfile.addEventListener('click', openeModalEditProfile)
@@ -140,3 +157,6 @@ btnOpenModalAddPhoto.addEventListener('click', OpenModalAddPhoto)
 btnCloseModalAddPhoto.addEventListener('click', closeModalAddPhoto)
 modalEditProfile.querySelector('.popup__form').addEventListener('submit', profileFormSubmitHandler)
 modalAddPhoto.querySelector('.popup__form').addEventListener('submit', cardFormSubmitHandler)
+modalEditProfile.addEventListener('click', closePopupClickOverlay)
+modalAddPhoto.addEventListener('click', closePopupClickOverlay)
+document.addEventListener('keydown', closePopupClickKeydown)

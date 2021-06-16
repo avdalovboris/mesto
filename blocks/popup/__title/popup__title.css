@@ -1,4 +1,4 @@
-.popup__header {
+.popup__title{
   font-weight: 900;
   font-size: 5.625vw;
   line-height: 22px;
@@ -6,13 +6,13 @@
 }
 
 @media (min-width: 375px) {
-  .popup__header {
+  .popup__title {
     font-size: 21.1px;
   }
 }
 
 @media (min-width: 620px) {
-  .popup__header {
+  .popup__title {
     font-size: 24px;
     line-height: 29px;
     margin: 34px 0 0 35.3px;

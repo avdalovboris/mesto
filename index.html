@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>KustoMes</title>
+  <title>newFinal</title>
 </head>
 <body class="body">
 
@@ -40,9 +40,6 @@
 
     </main>
 
-                                        
-                                        
-
     <div class="popup" id="popupFullScreen">
       <div class="full-screen">
         <div class="full-screen__block">
@@ -55,31 +52,41 @@
 
     <div class="popup" id="popupEditProfile">
       <div class="popup__container">
-  
-        <h2 class="popup__header">Редактировать профиль</h2>
-        <form action="#" method="GET"  class="popup__form" name="form_profile-info_popup">
-          <input type="text" class="popup__field" id="inputEditProfileName" name="popup__name">
-          <input type="text" class="popup__field" id="inputEditProfileJob" name="popup__job">
-          <button type="submit" class="popup__save">Сохранить</button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+
+        <form action="#" method="GET"  class="popup__form" name="user" novalidate>
+
+          <input type="text" class="popup__field" id="user-name" name="popup__name" minlength="2" maxlength="40" required>
+          <span id="user-name-error" class="error"></span>
+
+          <input type="text" class="popup__field" id="user-job" name="popup__job" minlength="2" maxlength="200" required>
+          <span id="user-job-error" class="error"></span>
+
+          <button type="submit" class="popup__button">Сохранить</button>
         </form>
-  
+
           <button type="button" class="popup__close" id="popupCloseEdit"></button>
-  
+
       </div>
     </div>
 
     <div class="popup" id="popupAddPhoto">
       <div class="popup__container">
-  
-        <h2 class="popup__header">Новое место</h2>
-        <form action="#" method="GET"  class="popup__form" name="form_profile-info_popup">
-          <input type="text" class="popup__field" id="inputAddPhotoName" name="popup__name_image" placeholder="Название">
-          <input type="text" class="popup__field" id="inputAddPhotoSrc" name="popup__src_image" placeholder="Ссылка на картинку">
-          <button type="submit" class="popup__save">добавить</button>
+        <h2 class="popup__title">Новое место</h2>
+
+        <form action="#" method="GET"  class="popup__form" name="new" novalidate>
+
+          <input type="text" class="popup__field" id="name-card" name="name" placeholder="Название" minlength="2" maxlength="30" required>
+          <span id="name-card-error" class="error"></span>
+
+          <input type="url" class="popup__field" id="link" name="link" placeholder="Ссылка на картинку" required>
+          <span id="link-error" class="error"></span>
+
+          <button type="submit" class="popup__button">добавить</button>
         </form>
-  
+
         <button type="button" class="popup__close" id="popupCloseAdd"></button>
-  
+
       </div>
     </div>
 
@@ -100,5 +107,6 @@
   </template>
 
   <script src="./script/script.js"></script>
+  <script src="./script/validate.js"></script>
 </body>
 </html>
