@@ -68,6 +68,8 @@ function profileFormSubmitHandler (submit) {
                       //add photo open | close
 function OpenModalAddPhoto() {
   openModal(modalAddPhoto)
+  modalAddPhoto.querySelector('#name-card').value = ""
+  modalAddPhoto.querySelector('#link').value = ""
 }
 
 function closeModalAddPhoto() {
@@ -126,8 +128,8 @@ function createCard(name, link) {
 
 function cardFormSubmitHandler(submit) {
   submit.preventDefault();
-  const nameNewPhotoName = modalAddPhoto.querySelector('#inputAddPhotoName').value
-  const nameNewPhotoSrc = modalAddPhoto.querySelector('#inputAddPhotoSrc').value
+  const nameNewPhotoName = modalAddPhoto.querySelector('#name-card').value
+  const nameNewPhotoSrc = modalAddPhoto.querySelector('#link').value
   const newCard = createCard(nameNewPhotoName, nameNewPhotoSrc); 
   elementsLists.prepend(newCard)
   closeModalAddPhoto();
