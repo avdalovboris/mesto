@@ -38,21 +38,46 @@ const cardPreview = document.querySelector('#popupFullScreen')
 const templateElement = document.querySelector('#templateElement').content
 const profileName = document.querySelector('.profile__full-name') 
 const profileJob = document.querySelector('.profile__profession') 
-
+const profileNameInput = modalEditProfile.querySelector('#user-name');
+const profileJobInput = modalEditProfile.querySelector('#user-job');
+const newCardNameInput = modalAddPhoto.querySelector('#name-card')
+const newCardLinkInput = modalAddPhoto.querySelector('#link')
+const modalFullScreenImg = cardPreview.querySelector('.full-screen__img')
+const modalFullScreenNameImg = cardPreview.querySelector('.full-screen__text')
+const nameNewPhotoName = modalAddPhoto.querySelector('#name-card')
+const nameNewPhotoSrc = modalAddPhoto.querySelector('#link')
 
                       //open and close popup
 function openModal(modal) {
   modal.classList.add('popup_opened')
+  document.addEventListener('keydown', doSomething)
 }
 
 function closeModal(modal) {
   modal.classList.remove('popup_opened')
+  document.removeEventListener('keydown', doSomething)
+}
+
+function doSomething(evt) {
+  if(evt.key === "Escape") {
+    closePopupClickKeydown()
+  }
+}
+
+function closePopupClickKeydown() {
+  const nameOpenModal = document.querySelector('.popup_opened')
+  closeModal(nameOpenModal)
 }
                       //edit profile: open | close | submit
 function openeModalEditProfile() {
   openModal(modalEditProfile)
-  modalEditProfile.querySelector('#user-name').value = document.querySelector('.profile__full-name').textContent
-  modalEditProfile.querySelector('#user-job').value = document.querySelector('.profile__profession').textContent
+  profileNameInput.value = profileName.textContent
+  profileJobInput.value = profileJob.textContent
+  setEventListeners(modalEditProfile, config)
+  //До того как стал делать config на странице validate.js
+  //подключил только setEventListeners(modalEditProfile) и все работало,
+  //после добавления карточки, открывая заново modalAddPhoto, кнопка была не активной
+  //как не крутил, не смог понять в чем причина ошибки сейчас
 }
 
 function closeModalEditProfile() {
@@ -61,19 +86,25 @@ function closeModalEditProfile() {
 
 function profileFormSubmitHandler (submit) {
   submit.preventDefault();
-  profileName.textContent = modalEditProfile.querySelector('#user-name').value
-  profileJob.textContent = modalEditProfile.querySelector('#user-job').value
+  profileName.textContent = profileNameInput.value
+  profileJob.textContent = profileJobInput.value
   closeModalEditProfile()
 }
                       //add photo open | close
 function OpenModalAddPhoto() {
   openModal(modalAddPhoto)
-  modalAddPhoto.querySelector('#name-card').value = ""
-  modalAddPhoto.querySelector('#link').value = ""
+  newCardNameInput.value = ""
+  newCardLinkInput.value = ""
+  setEventListeners(modalAddPhoto, config)
+  //До того как стал делать config на странице validate.js
+  //подключил только setEventListeners(modalAddPhoto) и все работало,
+  //после добавления карточки, открывая заново modalAddPhoto, кнопка была не активной
+  //как не крутил, не смог понять в чем причина ошибки сейчас
 }
 
 function closeModalAddPhoto() {
   closeModal(modalAddPhoto)
+  btnCloseModalAddPhoto.setAttribute('disabled', 'true')
 }
 
                       //load photo of massive | create new card | submit (add new photo on page)
@@ -107,19 +138,13 @@ function createCard(name, link) {
   function openCardPreview(evt) {
     openModal(cardPreview)
     cardPreview.classList.add('popup_full')
-    cardPreview.querySelector('.full-screen__img').src = evt.target.closest('.element__img').src
-    cardPreview.querySelector('.full-screen__text').textContent = evt.target.closest('.element').textContent
-  }
-
-  function closeCardPreview(evt) {
-    closeModal(cardPreview)
+    modalFullScreenImg.src = evt.target.closest('.element__img').src
+    modalFullScreenNameImg.textContent = evt.target.closest('.element').textContent
   }
 
   cardElement.querySelector('.element__like').addEventListener('click', handleLike)
   cardElement.querySelector('.element__delite').addEventListener('click', handleDeconste)
   cardElement.querySelector('.element__img').addEventListener('click', openCardPreview)
-  cardPreview.querySelector('.popup__close').addEventListener('click', closeCardPreview)
-  cardPreview.addEventListener('click', closePopupClickOverlay)
 
 
   elementsLists.prepend(cardElement)
@@ -128,9 +153,7 @@ function createCard(name, link) {
 
 function cardFormSubmitHandler(submit) {
   submit.preventDefault();
-  const nameNewPhotoName = modalAddPhoto.querySelector('#name-card').value
-  const nameNewPhotoSrc = modalAddPhoto.querySelector('#link').value
-  const newCard = createCard(nameNewPhotoName, nameNewPhotoSrc); 
+  const newCard = createCard(nameNewPhotoName.value, nameNewPhotoSrc.value); 
   elementsLists.prepend(newCard)
   closeModalAddPhoto();
 };
@@ -138,17 +161,6 @@ function cardFormSubmitHandler(submit) {
 function closePopupClickOverlay(event) {
   if(event.target === event.currentTarget){
     closeModal(event.currentTarget)
-  }
-}
-
-function closePopupClickKeydown(evt) {
-  const popupEditProfile = document.querySelector('#popupEditProfile')
-  const popupAddPhoto = document.querySelector('#popupAddPhoto')
-  const popupFullScreen = document.querySelector('#popupFullScreen')
-  if(evt.key === "Escape") {
-    closeModal(popupEditProfile)
-    closeModal(popupAddPhoto)
-    closeModal(popupFullScreen)
   }
 }
 
@@ -161,4 +173,5 @@ modalEditProfile.querySelector('.popup__form').addEventListener('submit', profil
 modalAddPhoto.querySelector('.popup__form').addEventListener('submit', cardFormSubmitHandler)
 modalEditProfile.addEventListener('click', closePopupClickOverlay)
 modalAddPhoto.addEventListener('click', closePopupClickOverlay)
-document.addEventListener('keydown', closePopupClickKeydown)
+cardPreview.querySelector('.popup__close').addEventListener('click', () => closeModal(cardPreview))
+cardPreview.addEventListener('click', closePopupClickOverlay)
