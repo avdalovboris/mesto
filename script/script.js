@@ -73,11 +73,12 @@ function openeModalEditProfile() {
   openModal(modalEditProfile)
   profileNameInput.value = profileName.textContent
   profileJobInput.value = profileJob.textContent
-  setEventListeners(modalEditProfile, config)
-  //До того как стал делать config на странице validate.js
-  //подключил только setEventListeners(modalEditProfile) и все работало,
-  //после добавления карточки, открывая заново modalAddPhoto, кнопка была не активной
-  //как не крутил, не смог понять в чем причина ошибки сейчас
+  const inputList = Array.from(modalEditProfile.querySelectorAll('.popup__field'));
+  const buttonElement = modalEditProfile.querySelector('.popup__button')
+  toggleButtonState(inputList, buttonElement, {
+    disabled: ['disabled', 'true'],
+    buttonActive: 'popup__button_inactive',
+  })
 }
 
 function closeModalEditProfile() {
@@ -95,11 +96,12 @@ function OpenModalAddPhoto() {
   openModal(modalAddPhoto)
   newCardNameInput.value = ""
   newCardLinkInput.value = ""
-  setEventListeners(modalAddPhoto, config)
-  //До того как стал делать config на странице validate.js
-  //подключил только setEventListeners(modalAddPhoto) и все работало,
-  //после добавления карточки, открывая заново modalAddPhoto, кнопка была не активной
-  //как не крутил, не смог понять в чем причина ошибки сейчас
+  const inputList = Array.from(modalAddPhoto.querySelectorAll('.popup__field'));
+  const buttonElement = modalAddPhoto.querySelector('.popup__button')
+  toggleButtonState(inputList, buttonElement, {
+    disabled: ['disabled', 'true'],
+    buttonActive: 'popup__button_inactive',
+  })
 }
 
 function closeModalAddPhoto() {
