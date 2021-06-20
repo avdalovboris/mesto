@@ -50,24 +50,21 @@ const nameNewPhotoSrc = modalAddPhoto.querySelector('#link')
                       //open and close popup
 function openModal(modal) {
   modal.classList.add('popup_opened')
-  document.addEventListener('keydown', doSomething)
+  document.addEventListener('keydown', closePopupClickEsc)
 }
 
 function closeModal(modal) {
   modal.classList.remove('popup_opened')
-  document.removeEventListener('keydown', doSomething)
+  document.removeEventListener('keydown', closePopupClickEsc)
 }
 
-function doSomething(evt) {
+function closePopupClickEsc(evt) {
+  const nameOpenModal = document.querySelector('.popup_opened')
   if(evt.key === "Escape") {
-    closePopupClickKeydown()
+    closeModal(nameOpenModal)
   }
 }
 
-function closePopupClickKeydown() {
-  const nameOpenModal = document.querySelector('.popup_opened')
-  closeModal(nameOpenModal)
-}
                       //edit profile: open | close | submit
 function openeModalEditProfile() {
   openModal(modalEditProfile)
@@ -106,7 +103,6 @@ function OpenModalAddPhoto() {
 
 function closeModalAddPhoto() {
   closeModal(modalAddPhoto)
-  btnCloseModalAddPhoto.setAttribute('disabled', 'true')
 }
 
                       //load photo of massive | create new card | submit (add new photo on page)

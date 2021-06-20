@@ -1,8 +1,6 @@
   
 function showInputError(formElement, inputElement, errorMessage, config) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
-//если `#${inputElement.id}-error` тоже нужно вставлять через config,
-//то подскажите пожалуйста как это делать?
   inputElement.classList.add(config.inputError);
   errorElement.textContent = errorMessage
   errorElement.classList.add(config.errorSpanActive)
