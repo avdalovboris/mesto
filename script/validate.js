@@ -21,17 +21,17 @@ class FormValidator {
     this._inputList = Array.from(this._formModal.elements);
     this._buttonElement = this._formModal.querySelector(this._formButton);
 
-    this._toggleButtonState()
+    this.toggleButtonState()
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', (el) => {
         el = inputElement
         this._isValid(el)
-        this._toggleButtonState()
+        this.toggleButtonState()
       })
     })
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     if (!this._formModal.checkValidity()) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
       this._buttonElement.setAttribute(this._buttonDisabled[0],[1]);
@@ -51,7 +51,7 @@ class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      this._hideInputError(inputElement);
+      this.hideInputError(inputElement);
     }
   }
 
@@ -63,7 +63,7 @@ class FormValidator {
     errorElement.classList.add(this._errorSpanActive)
   }
 
-  _hideInputError(inputElement) {
+  hideInputError(inputElement) {
     const errorElement = document.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = "";

@@ -59,14 +59,14 @@ const newCardNameInput = modalAddPhoto.querySelector('#name-card')
 const newCardLinkInput = modalAddPhoto.querySelector('#link')
 const modalFullScreenImg = cardPreview.querySelector('.full-screen__img')
 const modalFullScreenNameImg = cardPreview.querySelector('.full-screen__text')
-const nameNewPhotoName = modalAddPhoto.querySelector('#name-card')
-const nameNewPhotoSrc = modalAddPhoto.querySelector('#link')
+
 
 
 const validEditPofile = new FormValidator(object, modalEditProfileForm)
 validEditPofile.enableValidation();
 const validAddPhoto = new FormValidator(object, modalAddPhotoForm)
 validAddPhoto.enableValidation();
+
 
 
                       //open and close popup
@@ -92,16 +92,17 @@ function openeModalEditProfile() {
   openModal(modalEditProfile)
   profileNameInput.value = profileName.textContent
   profileJobInput.value = profileJob.textContent
-  //const inputList = Array.from(modalEditProfile.querySelectorAll('.popup__field'));
-  //const buttonElement = modalEditProfile.querySelector('.popup__button')
-  //toggleButtonState(inputList, buttonElement, {
-  //  disabled: ['disabled', 'true'],
-  //  buttonActive: 'popup__button_inactive',
-  //})
+  validEditPofile.toggleButtonState()
+  //TOOOOOOT
+  const inputList = modalEditProfile.querySelectorAll('.popup__field')
+  inputList.forEach((el) => {
+    validAddPhoto.hideInputError(el)
+  })
 }
 
 function closeModalEditProfile() {
   closeModal(modalEditProfile)
+
 }
 
 function profileFormSubmitHandler (submit) {
@@ -115,16 +116,17 @@ function OpenModalAddPhoto() {
   openModal(modalAddPhoto)
   newCardNameInput.value = ""
   newCardLinkInput.value = ""
-  //const inputList = Array.from(modalAddPhoto.querySelectorAll('.popup__field'));
-  //const buttonElement = modalAddPhoto.querySelector('.popup__button')
-  //toggleButtonState(inputList, buttonElement, {
-  //  disabled: ['disabled', 'true'],
-  //  buttonActive: 'popup__button_inactive',
-  //})
+  validAddPhoto.toggleButtonState()
+  //TOOOOOOT
+  const inputList = modalAddPhoto.querySelectorAll('.popup__field')
+  inputList.forEach((el) => {
+    validAddPhoto.hideInputError(el)
+  })
 }
 
 function closeModalAddPhoto() {
   closeModal(modalAddPhoto)
+
 }
 
                       //load photo of massive | create new card | submit (add new photo on page)
