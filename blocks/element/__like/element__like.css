@@ -4,6 +4,7 @@
   margin-right: 20px;
   transition: all .3s ease-in-out;
   border: none;
+  background: transparent url(../../../../images/element/__like/like.svg) no-repeat;
 }
 
 .element__like:hover {

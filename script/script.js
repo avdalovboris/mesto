@@ -1,5 +1,5 @@
-import Card from "./card.js";
-import FormValidator from "./validate.js";
+import Card from "./Card.js";
+import FormValidator from "./Validate.js";
 
 const initialCards = [
   {
@@ -34,7 +34,15 @@ const object = {
   buttonInActive: 'popup__button_inactive',
   disabled: ['disabled', 'true'],
   inputError: 'popup__field_error',
-  errorSpanActive: 'error__active'
+  errorSpanActive: 'error__active',
+  templateElemID: '#templateElement',
+  templateElement: '.element',
+  elementName: '.element__name',
+  elementImg: '.element__img',
+  elementLike: '.element__like',
+  elementLikeActive: 'element__like_active',
+  popupFullClass: 'popup_full',
+  elementDelite: '.element__delite',
 }
 
                       //дом edit profile
@@ -92,8 +100,6 @@ function openeModalEditProfile() {
   openModal(modalEditProfile)
   profileNameInput.value = profileName.textContent
   profileJobInput.value = profileJob.textContent
-  validEditPofile.toggleButtonState()
-  //TOOOOOOT
   const inputList = modalEditProfile.querySelectorAll('.popup__field')
   inputList.forEach((el) => {
     validAddPhoto.hideInputError(el)
@@ -112,12 +118,10 @@ function profileFormSubmitHandler (submit) {
   closeModalEditProfile()
 }
                       //add photo open | close
-function OpenModalAddPhoto() {
+function openModalAddPhoto() {
   openModal(modalAddPhoto)
-  newCardNameInput.value = ""
-  newCardLinkInput.value = ""
+  modalAddPhotoForm.reset()
   validAddPhoto.toggleButtonState()
-  //TOOOOOOT
   const inputList = modalAddPhoto.querySelectorAll('.popup__field')
   inputList.forEach((el) => {
     validAddPhoto.hideInputError(el)
@@ -135,7 +139,7 @@ function renderCards() {
 }
 
 function renderCard(cardElem){
-  const сard = new Card(cardElem)
+  const сard = new Card(cardElem, object)
   const newCard = сard.generateCard()
   elementsLists.prepend(newCard)
 }
@@ -146,7 +150,7 @@ function cardFormSubmitHandler(submit) {
     name: newCardNameInput.value,
     link: newCardLinkInput.value
   }
-  const сard = new Card(data); 
+  const сard = new Card(data, object); 
   const newCard = сard.generateCard()
   elementsLists.prepend(newCard)
   closeModalAddPhoto();
@@ -161,7 +165,7 @@ function closePopupClickOverlay(event) {
 renderCards()
 btnOpenModalEditProfile.addEventListener('click', openeModalEditProfile)
 btnCloseModalEditProfile.addEventListener('click', closeModalEditProfile)
-btnOpenModalAddPhoto.addEventListener('click', OpenModalAddPhoto)
+btnOpenModalAddPhoto.addEventListener('click', openModalAddPhoto)
 btnCloseModalAddPhoto.addEventListener('click', closeModalAddPhoto)
 modalEditProfile.querySelector('.popup__form').addEventListener('submit', profileFormSubmitHandler)
 modalAddPhoto.querySelector('.popup__form').addEventListener('submit', cardFormSubmitHandler)
