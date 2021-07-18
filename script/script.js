@@ -1,4 +1,4 @@
-import Card from "./Card.js";
+import Card from "./Сard.js";
 import FormValidator from "./Validate.js";
 
 const initialCards = [
@@ -111,8 +111,8 @@ function closeModalEditProfile() {
 
 }
 
-function profileFormSubmitHandler (submit) {
-  submit.preventDefault();
+function profileFormSubmitHandler (event) {
+  event.preventDefault();
   profileName.textContent = profileNameInput.value
   profileJob.textContent = profileJobInput.value
   closeModalEditProfile()
@@ -150,9 +150,7 @@ function cardFormSubmitHandler(submit) {
     name: newCardNameInput.value,
     link: newCardLinkInput.value
   }
-  const сard = new Card(data, object); 
-  const newCard = сard.generateCard()
-  elementsLists.prepend(newCard)
+  renderCard(data, object)
   closeModalAddPhoto();
 };
 
